@@ -52,21 +52,7 @@ router.post('/', upload.single('cover'), async (req, res) => {
   }
 });
 
-// ✅ FIXED: Use router.put instead of app.put
-/*router.put('/:id', async (req, res) => {
-  const { id } = req.params;
-  const { title, author, genre, status } = req.body;
 
-  try {
-    const result = await pool.query(
-      'UPDATE books SET title = $1, author = $2, genre = $3, status = $4 WHERE id = $5 RETURNING *',
-      [title, author, genre, status, id]
-    );
-    res.json(result.rows[0]);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});*/
 
 
 router.put('/:id', upload.single('cover'), async (req, res) => {
